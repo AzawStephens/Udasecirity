@@ -19,13 +19,17 @@ import java.util.Set;
  */
 public class SecurityService {
 
-    private FakeImageService imageService;
+    private ImageServiceInterface imageService;
     private SecurityRepository securityRepository;
     private Set<StatusListener> statusListeners = new HashSet<>();
-
-    public SecurityService(SecurityRepository securityRepository, FakeImageService imageService) {
+    private SecurityServiceInterface securityServiceInterface;
+    public SecurityService(SecurityRepository securityRepository, ImageServiceInterface imageService) {
         this.securityRepository = securityRepository;
         this.imageService = imageService;
+    }
+
+    public SecurityService(SecurityServiceInterface securityServiceInterface) {
+        this.securityServiceInterface = securityServiceInterface;
     }
 
     /**
@@ -33,11 +37,16 @@ public class SecurityService {
      * may update both the alarm status.
      * @param armingStatus
      */
+
     public void setArmingStatus(ArmingStatus armingStatus) {
         if(armingStatus == ArmingStatus.DISARMED) {
             setAlarmStatus(AlarmStatus.NO_ALARM);
         }
         securityRepository.setArmingStatus(armingStatus);
+    }
+    public void pendingAlarmStatus()
+    {
+
     }
 
     /**

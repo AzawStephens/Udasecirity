@@ -3,6 +3,7 @@ package catpoint.application;
 import catpoint.data.PretendDatabaseSecurityRepositoryImpl;
 import catpoint.data.SecurityRepository;
 import catpoint.service.FakeImageService;
+import catpoint.service.ImageServiceInterface;
 import catpoint.service.SecurityService;
 import net.miginfocom.swing.MigLayout;
 
@@ -16,7 +17,7 @@ import javax.swing.*;
  */
 public class CatpointGui extends JFrame {
     private SecurityRepository securityRepository = new PretendDatabaseSecurityRepositoryImpl();
-    private FakeImageService imageService = new FakeImageService();
+    private ImageServiceInterface imageService = new FakeImageService();
     private SecurityService securityService = new SecurityService(securityRepository, imageService);
     private DisplayPanel displayPanel = new DisplayPanel(securityService);
     private ControlPanel controlPanel = new ControlPanel(securityService);
