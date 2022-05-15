@@ -2,10 +2,11 @@ package catpoint.application;
 
 import catpoint.data.PretendDatabaseSecurityRepositoryImpl;
 import catpoint.data.SecurityRepository;
-import catpoint.service.FakeImageService;
-import catpoint.service.ImageServiceInterface;
+import catpoint.data.service.FakeImageService;
+
 import catpoint.service.SecurityService;
 import net.miginfocom.swing.MigLayout;
+import service.ImageServiceInterface;
 
 import javax.swing.*;
 

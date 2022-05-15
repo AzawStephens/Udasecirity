@@ -5,6 +5,7 @@ import catpoint.data.AlarmStatus;
 import catpoint.data.ArmingStatus;
 import catpoint.data.SecurityRepository;
 import catpoint.data.Sensor;
+import service.ImageServiceInterface;
 
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
@@ -44,10 +45,7 @@ public class SecurityService {
         }
         securityRepository.setArmingStatus(armingStatus);
     }
-    public void pendingAlarmStatus()
-    {
 
-    }
 
     /**
      * Internal method that handles alarm status changes based on whether
@@ -116,11 +114,19 @@ public class SecurityService {
     public void changeSensorActivationStatus(Sensor sensor, Boolean active) {
         if(!sensor.getActive() && active) {
             handleSensorActivated();
+           // changeAlarmStatus(sensor);
         } else if (sensor.getActive() && !active) {
             handleSensorDeactivated();
         }
         sensor.setActive(active);
         securityRepository.updateSensor(sensor);
+    }
+    public void changeAlarmStatus(Sensor sensor, Boolean active)
+    {
+        if(getAlarmStatus() == AlarmStatus.ALARM && sensor.getActive())
+        {
+            setAlarmStatus(AlarmStatus.PENDING_ALARM);
+        }
     }
 
     /**

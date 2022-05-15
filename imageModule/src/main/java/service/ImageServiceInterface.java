@@ -1,4 +1,4 @@
-package catpoint.service;
+package service;
 
 import java.awt.image.BufferedImage;
 
