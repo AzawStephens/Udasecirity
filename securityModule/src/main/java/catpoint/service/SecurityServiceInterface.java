@@ -8,4 +8,5 @@ import java.util.Set;
 
 public interface SecurityServiceInterface {
     void pendingAlarmStatus();
+    void changeAlarmStatus(Sensor sensor, Boolean active);
 }

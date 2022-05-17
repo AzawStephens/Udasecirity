@@ -16,8 +16,9 @@ public class SecurityServiceTest {
 
     @Mock
     private SecurityServiceInterface securityServiceInterface;
-
     private SecurityService securityService;
+    private Sensor sensor;
+    private Boolean active = true;
 
     @BeforeEach
     void init()
